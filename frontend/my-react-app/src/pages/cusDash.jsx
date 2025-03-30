@@ -125,7 +125,7 @@ function CustomerDashboard() {
           </section>
 
           {/* Service History */}
-          <section>
+          <section className="mb-8"> {/* Added margin-bottom */}
             <div className="flex flex-col sm:flex-row justify-between items-center mb-3 gap-3 animate-slide-up">
               <h2 className="text-2xl font-bold text-gray-800 font-[Poppins]">Your Service History</h2>
               <div className="flex gap-2">
@@ -138,7 +138,6 @@ function CustomerDashboard() {
                   <option value="Completed">Completed</option>
                   <option value="Pending">Pending</option>
                 </select>
-                {/* Removed Add Service button */}
               </div>
             </div>
             <div className="overflow-x-auto">

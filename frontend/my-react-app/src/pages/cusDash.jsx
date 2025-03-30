@@ -66,9 +66,9 @@ function CustomerDashboard() {
             {[
               { text: 'Home', path: '/dashboard', active: true },
               { text: 'Profile', path: '/profile' },
-              { text: 'Contact Us', path: '/contact' },
               { text: 'Contact Technician', path: '/contact-technician' },
               { text: 'Book Service Center', path: '/book-service-center' },
+              { text: 'Contact Us', path: '/contact' },
               { text: 'About Us', path: '/about-us' },
               { text: 'Logout', path: '/logout' },
             ].map((item) => (

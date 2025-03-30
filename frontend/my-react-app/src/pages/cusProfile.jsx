@@ -36,7 +36,6 @@ function Profile() {
           <ul className="space-y-2 font-[Open Sans]">
             {[
               { text: 'Home', path: '/dashboard' },
-              { text: 'Book Service', path: '/book-service' },
               { text: 'Profile', path: '/profile', active: true },
               { text: 'Contact Us', path: '/contact' },
               { text: 'About Us', path: '/about-us' },

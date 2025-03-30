@@ -37,7 +37,6 @@ function Profile() {
             {[
               { text: 'Home', path: '/dashboard' },
               { text: 'Book Service', path: '/book-service' },
-              { text: 'Service History', path: '/service-history' },
               { text: 'Profile', path: '/profile', active: true },
               { text: 'Contact Us', path: '/contact' },
               { text: 'About Us', path: '/about-us' },

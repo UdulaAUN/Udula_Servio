@@ -11,6 +11,8 @@ import AdminDashboard from './pages/admin';
 import ManageUsers from './pages/manageUsers';
 import AllServices from './pages/allServices';
 import AdminReports from './pages/reports';
+import ContactTechnician from './pages/contactTechnician';
+import BookServiceCenter from './pages/BookServiceCenter';
 import './index.css'; 
 
 function App() {
@@ -30,6 +32,9 @@ function App() {
             <Route path="/manage-users" element={<ManageUsers />}/>
             <Route path="/all-services" element={<AllServices />}/>
             <Route path="/reports" element={<AdminReports />}/>
+            <Route path="/contact-technician" element={<ContactTechnician />}/>
+            <Route path="/book-service-center" element={<BookServiceCenter />}/>
+
           </Routes>
           
         </div>

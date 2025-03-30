@@ -1,8 +1,8 @@
 // src/components/Profile.jsx
 import React, { useState } from 'react';
 import { FaBars, FaEdit } from 'react-icons/fa';
+import { motion } from "framer-motion"; // For animations
 import Footer from './Footer';
-
 
 function Profile() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -20,13 +20,43 @@ function Profile() {
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
+  // Framer Motion animation variants (copied from CustomerDashboard.jsx and EditProfile.jsx)
+  const slideUpVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+  const scaleUpVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+  const pulseVariants = {
+    pulse: {
+      scale: [1, 1.1, 1],
+      transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+    }
+  };
+
+  const sidebarVariants = {
+    hidden: { x: "-100%" },
+    visible: { x: 0, transition: { duration: 0.3, ease: "easeInOut" } }
+  };
+
   return (
     <div className="flex flex-col min-h-screen font-sans bg-gray-100 text-gray-900">
       <div className="flex flex-1">
         {/* Sidebar */}
-        <aside className={`fixed inset-y-0 left-0 w-64 bg-gray-800 text-white p-5 transform 
-          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
-          md:static md:translate-x-0 md:w-64 md:min-w-[16rem] transition-transform duration-300 ease-in-out z-20`}>
+        <motion.aside 
+          className={`fixed inset-y-0 left-0 w-64 bg-gray-800 text-white p-5 transform 
+            ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
+            md:static md:translate-x-0 md:w-64 md:min-w-[16rem] transition-transform duration-300 ease-in-out z-20`}
+          initial={{ x: "-100%" }}
+          animate={{ x: 0 }} // Always visible on desktop, overridden by CSS on mobile
+          variants={sidebarVariants}
+          // Only apply animation on mobile
+          {...(window.innerWidth < 768 ? { animate: isSidebarOpen ? "visible" : "hidden" } : {})}
+        >
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-center text-2xl font-extrabold flex-1 font-[Poppins] tracking-tight">Servio Dashboard</h2>
             <button className="md:hidden text-2xl hover:text-orange-500 transition-colors duration-200" onClick={toggleSidebar}>
@@ -53,37 +83,55 @@ function Profile() {
               </li>
             ))}
           </ul>
-        </aside>
+        </motion.aside>
 
         {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden fixed top-4 left-4 z-30 p-2 bg-orange-600 text-white rounded-full hover:bg-orange-700 hover:scale-110 transition-all duration-200 ease-in-out animate-pulse"
+        <motion.button 
+          className="md:hidden fixed top-4 left-4 z-30 p-2 bg-orange-600 text-white rounded-full hover:bg-orange-700 hover:scale-110 transition-all duration-200 ease-in-out"
           onClick={toggleSidebar}
+          variants={pulseVariants}
+          animate="pulse"
         >
           <FaBars />
-        </button>
+        </motion.button>
 
         {/* Main Content */}
         <main className="flex-1 p-5 max-w-7xl mx-auto w-full">
-          <header className="bg-gradient-to-r from-orange-600 to-orange-800 text-white p-4 rounded-lg mb-6 flex justify-between items-center shadow-lg animate-slide-up">
+          <motion.header 
+            className="bg-gradient-to-r from-orange-600 to-orange-800 text-white p-4 rounded-lg mb-6 flex justify-between items-center shadow-lg"
+            initial="hidden"
+            animate="visible"
+            variants={slideUpVariants}
+          >
             <h1 className="text-3xl font-extrabold font-[Poppins] tracking-tight">Your Profile</h1>
-          </header>
+          </motion.header>
 
           {/* Profile Sections */}
           <div className="max-w-4xl mx-auto space-y-6">
             {/* Profile Picture Section */}
-            <section className="p-6 rounded-lg shadow-lg bg-white animate-scale-up flex flex-col items-center">
+            <motion.section 
+              className="p-6 rounded-lg shadow-lg bg-white flex flex-col items-center"
+              initial="hidden"
+              animate="visible"
+              variants={scaleUpVariants}
+            >
               <img 
                 src={userData.profilePicture} 
                 alt="Profile Picture" 
                 className="w-32 h-32 rounded-full object-cover border-4 border-orange-600"
               />
-            </section>
+            </motion.section>
 
             {/* Personal Information and Vehicle Details */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Personal Information Sector */}
-              <section className="p-6 rounded-lg shadow-lg bg-white animate-scale-up animate-delay-100">
+              <motion.section 
+                className="p-6 rounded-lg shadow-lg bg-white"
+                initial="hidden"
+                animate="visible"
+                variants={scaleUpVariants}
+                transition={{ delay: 0.1 }} // Matches animate-delay-100
+              >
                 <div className="flex justify-between items-center mb-6">
                   <h2 className="text-xl font-bold text-gray-800 font-[Poppins]">Personal Information</h2>
                   <a 
@@ -112,10 +160,16 @@ function Profile() {
                     <p className="text-gray-900">{userData.address}</p>
                   </div>
                 </div>
-              </section>
+              </motion.section>
 
               {/* Vehicle Details Sector */}
-              <section className="p-6 rounded-lg shadow-lg bg-white animate-scale-up animate-delay-200">
+              <motion.section 
+                className="p-6 rounded-lg shadow-lg bg-white"
+                initial="hidden"
+                animate="visible"
+                variants={scaleUpVariants}
+                transition={{ delay: 0.2 }} // Matches animate-delay-200
+              >
                 <div className="flex justify-between items-center mb-6">
                   <h2 className="text-xl font-bold text-gray-800 font-[Poppins]">Vehicle Details</h2>
                   <a 
@@ -144,7 +198,7 @@ function Profile() {
                     <p className="text-gray-900">{userData.licensePlate}</p>
                   </div>
                 </div>
-              </section>
+              </motion.section>
             </div>
           </div>
         </main>

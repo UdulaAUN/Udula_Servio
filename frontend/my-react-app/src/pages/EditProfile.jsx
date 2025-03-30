@@ -1,8 +1,8 @@
 // src/components/EditProfile.jsx
 import React, { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
+import { motion } from "framer-motion"; // For animations
 import Footer from './Footer';
-
 
 function EditProfile() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -29,13 +29,48 @@ function EditProfile() {
     console.log('Profile updated:', formData);
   };
 
+  // Framer Motion animation variants from CustomerDashboard
+  const slideUpVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+  const scaleUpVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+  const fadeInVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.5, ease: "easeIn" } }
+  };
+
+  const pulseVariants = {
+    pulse: {
+      scale: [1, 1.1, 1],
+      transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+    }
+  };
+
+  const sidebarVariants = {
+    hidden: { x: "-100%" },
+    visible: { x: 0, transition: { duration: 0.3, ease: "easeInOut" } }
+  };
+
   return (
     <div className="flex flex-col min-h-screen font-sans bg-gray-100 text-gray-900">
       <div className="flex flex-1">
         {/* Sidebar */}
-        <aside className={`fixed inset-y-0 left-0 w-64 bg-gray-800 text-white p-5 transform 
-          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
-          md:static md:translate-x-0 md:w-64 md:min-w-[16rem] transition-transform duration-300 ease-in-out z-20`}>
+        <motion.aside 
+          className={`fixed inset-y-0 left-0 w-64 bg-gray-800 text-white p-5 transform 
+            ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
+            md:static md:translate-x-0 md:w-64 md:min-w-[16rem] transition-transform duration-300 ease-in-out z-20`}
+          initial={{ x: "-100%" }}
+          animate={{ x: 0 }} // Always visible on desktop, overridden by CSS on mobile
+          variants={sidebarVariants}
+          // Only apply animation on mobile
+          {...(window.innerWidth < 768 ? { animate: isSidebarOpen ? "visible" : "hidden" } : {})}
+        >
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-center text-2xl font-extrabold flex-1 font-[Poppins] tracking-tight">Servio Dashboard</h2>
             <button className="md:hidden text-2xl hover:text-orange-500 transition-colors duration-200" onClick={toggleSidebar}>
@@ -45,6 +80,7 @@ function EditProfile() {
           <ul className="space-y-2 font-[Open Sans]">
             {[
               { text: 'Home', path: '/dashboard' },
+              { text: 'Service History', path: '/service-history' },
               { text: 'Profile', path: '/profile', active: true },
               { text: 'Contact Us', path: '/contact' },
               { text: 'About Us', path: '/about-us' },
@@ -62,25 +98,50 @@ function EditProfile() {
               </li>
             ))}
           </ul>
-        </aside>
+        </motion.aside>
 
         {/* Mobile Menu Button */}
-        <button 
+        <motion.button 
           className="md:hidden fixed top-4 left-4 z-30 p-2 bg-orange-600 text-white rounded-full hover:bg-orange-700 hover:scale-110 transition-all duration-200 ease-in-out animate-pulse"
           onClick={toggleSidebar}
+          variants={pulseVariants}
+          animate="pulse"
         >
           <FaBars />
-        </button>
+        </motion.button>
 
         {/* Main Content */}
         <main className="flex-1 p-5 max-w-7xl mx-auto w-full">
-          <header className="bg-gradient-to-r from-orange-600 to-orange-800 text-white p-4 rounded-lg mb-6 flex justify-between items-center shadow-lg animate-slide-up">
+          <motion.header 
+            className="bg-gradient-to-r from-orange-600 to-orange-800 text-white p-4 rounded-lg mb-6 flex justify-between items-center shadow-lg animate-slide-up"
+            initial="hidden"
+            animate="visible"
+            variants={slideUpVariants}
+          >
             <h1 className="text-3xl font-extrabold font-[Poppins] tracking-tight">Edit Your Profile</h1>
-          </header>
+          </motion.header>
 
-          <section className="bg-white p-6 rounded-lg shadow-lg max-w-2xl mx-auto animate-scale-up">
-            <h2 className="text-xl font-bold text-gray-800 mb-4 font-[Poppins]">Update Your Information</h2>
-            <form onSubmit={handleSubmit} className="space-y-6 font-[Open Sans] animate-fade-in">
+          <motion.section 
+            className="bg-white p-6 rounded-lg shadow-lg max-w-2xl mx-auto animate-scale-up"
+            initial="hidden"
+            animate="visible"
+            variants={scaleUpVariants}
+          >
+            <motion.h2 
+              className="text-xl font-bold text-gray-800 mb-4 font-[Poppins]"
+              initial="hidden"
+              animate="visible"
+              variants={slideUpVariants}
+            >
+              Update Your Information
+            </motion.h2>
+            <motion.form 
+              onSubmit={handleSubmit} 
+              className="space-y-6 font-[Open Sans] animate-fade-in"
+              initial="hidden"
+              animate="visible"
+              variants={fadeInVariants}
+            >
               {/* Personal Information */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -131,7 +192,14 @@ function EditProfile() {
 
               {/* Vehicle Information */}
               <div>
-                <h3 className="text-lg font-semibold mb-3 text-gray-800 font-[Raleway]">Vehicle Details</h3>
+                <motion.h3 
+                  className="text-lg font-semibold mb-3 text-gray-800 font-[Raleway]"
+                  initial="hidden"
+                  animate="visible"
+                  variants={slideUpVariants}
+                >
+                  Vehicle Details
+                </motion.h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-gray-800 mb-1 font-medium">Make</label>
@@ -184,21 +252,25 @@ function EditProfile() {
 
               {/* Submit Button */}
               <div className="flex justify-end gap-4">
-                <a 
+                <motion.a 
                   href="/profile"
                   className="px-4 py-2 rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300 hover:scale-105 transition-all duration-200 ease-in-out transform"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   Cancel
-                </a>
-                <button
+                </motion.a>
+                <motion.button
                   type="submit"
                   className="px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-800 text-white rounded-md hover:bg-orange-700 hover:scale-105 transition-all duration-200 ease-in-out transform"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   Save Changes
-                </button>
+                </motion.button>
               </div>
-            </form>
-          </section>
+            </motion.form>
+          </motion.section>
         </main>
       </div>
 

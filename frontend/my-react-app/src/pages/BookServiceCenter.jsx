@@ -1,5 +1,6 @@
 // src/components/BookServiceCenter.jsx
 import React, { useState } from 'react';
+import { motion } from "framer-motion"; // For animations
 import Footer from './Footer';
 
 function BookServiceCenter() {
@@ -61,21 +62,65 @@ function BookServiceCenter() {
     });
   };
 
+  // Framer Motion animation variants (same as CustomerDashboard)
+  const slideUpVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+  const scaleUpVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+  const fadeInVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.5, ease: "easeIn" } }
+  };
+
+  const modalVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.3, ease: "easeOut" } },
+    exit: { opacity: 0, scale: 0.9, transition: { duration: 0.2, ease: "easeIn" } }
+  };
+
   return (
     <div className="flex flex-col min-h-screen font-sans bg-gray-100 text-gray-900">
-      <header className="bg-gradient-to-r from-orange-600 to-orange-800 text-white p-4 shadow-lg animate-slide-up">
+      <motion.header 
+        className="bg-gradient-to-r from-orange-600 to-orange-800 text-white p-4 shadow-lg"
+        initial="hidden"
+        animate="visible"
+        variants={slideUpVariants}
+      >
         <h1 className="text-3xl font-extrabold font-[Poppins] tracking-tight text-center">Book a Service Center</h1>
-      </header>
+      </motion.header>
 
       <main className="flex-1 p-5 max-w-4xl mx-auto w-full">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4 font-[Raleway] text-center">Schedule Your Service</h2>
-        <p className="text-gray-600 mb-6 font-[Open Sans] text-center">
+        <motion.h2 
+          className="text-2xl font-semibold text-gray-800 mb-4 font-[Raleway] text-center"
+          initial="hidden"
+          animate="visible"
+          variants={slideUpVariants}
+        >
+          Schedule Your Service
+        </motion.h2>
+        <motion.p 
+          className="text-gray-600 mb-6 font-[Open Sans] text-center"
+          initial="hidden"
+          animate="visible"
+          variants={fadeInVariants}
+        >
           Select a service center and fill out the form below to book your appointment. We’ll confirm your booking soon!
-        </p>
+        </motion.p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Service Center Selection */}
-          <section className="bg-white p-6 rounded-lg shadow-lg animate-scale-up">
+          <motion.section 
+            className="bg-white p-6 rounded-lg shadow-lg"
+            initial="hidden"
+            animate="visible"
+            variants={scaleUpVariants}
+          >
             <h3 className="text-xl font-semibold text-gray-800 mb-4 font-[Raleway] border-b border-gray-300 pb-2">Select Service Center</h3>
             <div className="relative">
               <button
@@ -87,7 +132,13 @@ function BookServiceCenter() {
                 <span>{showServiceCenterDropdown ? '▲' : '▼'}</span>
               </button>
               {showServiceCenterDropdown && (
-                <ul className="absolute z-10 w-full bg-white border border-gray-300 rounded-md mt-1 max-h-40 overflow-y-auto shadow-lg">
+                <motion.ul 
+                  className="absolute z-10 w-full bg-white border border-gray-300 rounded-md mt-1 max-h-40 overflow-y-auto shadow-lg"
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  variants={modalVariants}
+                >
                   {serviceCenters.map((center) => (
                     <li
                       key={center}
@@ -97,15 +148,20 @@ function BookServiceCenter() {
                       {center}
                     </li>
                   ))}
-                </ul>
+                </motion.ul>
               )}
             </div>
-          </section>
+          </motion.section>
 
           {/* Customer and Vehicle Details Side by Side */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Customer Details Box */}
-            <section className="bg-white p-6 rounded-lg shadow-lg animate-scale-up">
+            <motion.section 
+              className="bg-white p-6 rounded-lg shadow-lg"
+              initial="hidden"
+              animate="visible"
+              variants={scaleUpVariants}
+            >
               <h3 className="text-xl font-semibold text-gray-800 mb-4 font-[Raleway] border-b border-gray-300 pb-2">Customer Details</h3>
               <div className="space-y-4">
                 <div>
@@ -148,10 +204,16 @@ function BookServiceCenter() {
                   />
                 </div>
               </div>
-            </section>
+            </motion.section>
 
             {/* Vehicle Details Box */}
-            <section className="bg-white p-6 rounded-lg shadow-lg animate-scale-up">
+            <motion.section 
+              className="bg-white p-6 rounded-lg shadow-lg"
+              initial="hidden"
+              animate="visible"
+              variants={scaleUpVariants}
+              transition={{ delay: 0.1 }}
+            >
               <h3 className="text-xl font-semibold text-gray-800 mb-4 font-[Raleway] border-b border-gray-300 pb-2">Vehicle Details</h3>
               <div className="space-y-4">
                 <div>
@@ -196,11 +258,16 @@ function BookServiceCenter() {
                   />
                 </div>
               </div>
-            </section>
+            </motion.section>
           </div>
 
           {/* Service Details Box */}
-          <section className="bg-white p-6 rounded-lg shadow-lg animate-scale-up">
+          <motion.section 
+            className="bg-white p-6 rounded-lg shadow-lg"
+            initial="hidden"
+            animate="visible"
+            variants={scaleUpVariants}
+          >
             <h3 className="text-xl font-semibold text-gray-800 mb-4 font-[Raleway] border-b border-gray-300 pb-2">Service Details</h3>
             <div className="space-y-4">
               <div>
@@ -242,10 +309,15 @@ function BookServiceCenter() {
                 />
               </div>
             </div>
-          </section>
+          </motion.section>
 
           {/* Message Box */}
-          <section className="bg-white p-6 rounded-lg shadow-lg animate-scale-up">
+          <motion.section 
+            className="bg-white p-6 rounded-lg shadow-lg"
+            initial="hidden"
+            animate="visible"
+            variants={scaleUpVariants}
+          >
             <div className="space-y-4">
               <div>
                 <label htmlFor="message" className="block mb-1 text-gray-800 font-[Open Sans]">Additional Notes</label>
@@ -260,15 +332,17 @@ function BookServiceCenter() {
                 />
               </div>
               <div className="flex justify-end gap-2">
-                <button
+                <motion.button
                   type="submit"
                   className="px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-800 text-white rounded-md hover:bg-orange-700 hover:scale-105 transition-all duration-200 ease-in-out transform"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   Book Service
-                </button>
+                </motion.button>
               </div>
             </div>
-          </section>
+          </motion.section>
         </form>
       </main>
 

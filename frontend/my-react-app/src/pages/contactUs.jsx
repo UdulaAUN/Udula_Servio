@@ -71,6 +71,24 @@ function Contact() {
       >
         <FaBars />
       </button>
+      <button 
+        className="md:hidden fixed top-4 left-4 z-30 p-2 bg-blue-600 text-white rounded-full"
+        onClick={toggleSidebar}
+      >
+        <FaBars />
+      </button>
+      <button 
+        className="md:hidden fixed top-4 left-4 z-30 p-2 bg-blue-600 text-white rounded-full"
+        onClick={toggleSidebar}
+      >
+        <FaBars />
+      </button>
+      <button 
+        className="md:hidden fixed top-4 left-4 z-30 p-2 bg-blue-600 text-white rounded-full"
+        onClick={toggleSidebar}
+      >
+        <FaBars />
+      </button>
 
       {/* Main Content */}
       <main className="flex-1 p-5">

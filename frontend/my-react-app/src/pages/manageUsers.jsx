@@ -83,6 +83,24 @@ function ManageUsers() {
         >
           <FaBars />
         </button>
+        <button 
+          className="md:hidden fixed top-4 left-4 z-30 p-2 bg-orange-600 text-white rounded-full hover:bg-orange-700 hover:scale-110 transition-all duration-200 ease-in-out animate-pulse"
+          onClick={toggleSidebar}
+        >
+          <FaBars />
+        </button>
+        <button 
+          className="md:hidden fixed top-4 left-4 z-30 p-2 bg-orange-600 text-white rounded-full hover:bg-orange-700 hover:scale-110 transition-all duration-200 ease-in-out animate-pulse"
+          onClick={toggleSidebar}
+        >
+          <FaBars />
+        </button>
+        <button 
+          className="md:hidden fixed top-4 left-4 z-30 p-2 bg-orange-600 text-white rounded-full hover:bg-orange-700 hover:scale-110 transition-all duration-200 ease-in-out animate-pulse"
+          onClick={toggleSidebar}
+        >
+          <FaBars />
+        </button>
 
         {/* Main Content */}
         <main className="flex-1 p-5 max-w-7xl mx-auto w-full">

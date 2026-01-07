@@ -43,6 +43,17 @@ function Footer() {
               ))}
             </ul>
           </div>
+          <div>
+            <h3 className="text-xl font-bold font-[Raleway] mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              {footerLinks.map((link, index) => (
+                <li key={link.text}>
+                  
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* Contact Info */}
           <div>

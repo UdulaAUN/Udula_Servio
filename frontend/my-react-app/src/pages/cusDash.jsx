@@ -134,6 +134,22 @@ function CustomerDashboard() {
         >
           <FaBars />
         </motion.button>
+        <motion.button 
+          className="md:hidden fixed top-4 left-4 z-30 p-2 bg-orange-600 text-white rounded-full hover:bg-orange-700 hover:scale-110 transition-all duration-200 ease-in-out"
+          
+          variants={pulseVariants}
+          animate="pulse"
+        >
+          <FaBars />
+        </motion.button>
+        <motion.button 
+          className="md:hidden fixed top-4 left-4 z-30 p-2 bg-orange-600 text-white rounded-full hover:bg-orange-700 hover:scale-110 transition-all duration-200 ease-in-out"
+          onClick={toggleSidebar}
+         
+          animate="pulse"
+        >
+          <FaBars />
+        </motion.button>
 
         {/* Main Content */}
         <main className="flex-1 p-5 max-w-7xl mx-auto w-full">

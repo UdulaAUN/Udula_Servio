@@ -27,6 +27,13 @@ function AllServices() {
     setShowAddModal(false);
   };
 
+  const handleServiceSubmit = (e) => {
+    e.preventDefault();
+    setNewService({ customer: '',: '', type: '', status: 'Pending', cost: '' });
+    setShowAddModal(false);
+  };
+
+
   const handleEditSubmit = (e) => {
     e.preventDefault();
     setServices(services.map(service => 
@@ -51,6 +58,11 @@ function AllServices() {
           md:static md:translate-x-0 md:w-64 md:min-w-[16rem] transition-transform duration-300 ease-in-out z-20`}>
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-center text-2xl font-extrabold flex-1 font-[Poppins] tracking-tight">Admin Dashboard</h2>
+            <button className="md:hidden text-2xl hover:text-orange-500 transition-colors duration-200" onClick={toggleSidebar}>
+              ×
+            </button>
+          </div>
+          <div className="flex justify-between items-center mb-6">
             <button className="md:hidden text-2xl hover:text-orange-500 transition-colors duration-200" onClick={toggleSidebar}>
               ×
             </button>

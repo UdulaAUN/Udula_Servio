@@ -98,6 +98,18 @@ function ContactTechnician() {
                     required
                   />
                 </div>
+                              <div className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block mb-1 text-gray-800 font-[Open Sans]">Your Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="w-full p-2 border rounded-md bg-white border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    placeholder="e.g., John Doe"
+                    required
+                  />
+                </div>
                 <div>
                   <label htmlFor="email" className="block mb-1 text-gray-800 font-[Open Sans]">Your Email</label>
                   <input

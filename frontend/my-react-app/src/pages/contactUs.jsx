@@ -42,6 +42,16 @@ function Contact() {
           <h2 className="text-center text-xl font-bold flex-1">Servio Dashboard</h2>
           <button className="md:hidden text-2xl" onClick={toggleSidebar}>×</button>
         </div>
+
+        <div className={`flex min-h-screen font-sans ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'}`}>
+      {/* Sidebar */}
+      <aside className={`fixed inset-y-0 left-0 w-64 bg-gray-800 text-white p-5 transform 
+        
+        md:relative md:translate-x-0 transition-transform duration-300 ease-in-out z-20`}>
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-center text-xl font-bold flex-1">Servio Dashboard</h2>
+          <button className="md:hidden text-2xl" onClick={toggleSidebar}>×</button>
+        </div>
         <ul className="space-y-2">
           {[
             { text: 'Home', path: '/dashboard' },
@@ -71,21 +81,26 @@ function Contact() {
       >
         <FaBars />
       </button>
+<button 
+        className="md:hidden fixed top-4 left-4 z-30 p-2 bg-blue-600 text-white rounded-full"
+        
+      >
+        <FaBars />
+      </button>
+          
       <button 
         className="md:hidden fixed top-4 left-4 z-30 p-2 bg-blue-600 text-white rounded-full"
+       
+      >
+        <FaBars />
+      </button>
+      <button 
         onClick={toggleSidebar}
       >
         <FaBars />
       </button>
       <button 
         className="md:hidden fixed top-4 left-4 z-30 p-2 bg-blue-600 text-white rounded-full"
-        onClick={toggleSidebar}
-      >
-        <FaBars />
-      </button>
-      <button 
-        className="md:hidden fixed top-4 left-4 z-30 p-2 bg-blue-600 text-white rounded-full"
-        onClick={toggleSidebar}
       >
         <FaBars />
       </button>
@@ -101,6 +116,11 @@ function Contact() {
           >
             {isDarkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
           </button>
+        </header>
+
+         <header className="bg-blue-600 text-white p-4 rounded-lg mb-6 flex justify-between items-center shadow-md">
+          <h1 className="text-2xl font-bold">Contact Us</h1>
+          
         </header>
 
         {/* Contact Content */}

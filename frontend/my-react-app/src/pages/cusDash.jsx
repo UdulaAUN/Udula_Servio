@@ -59,6 +59,8 @@ function CustomerDashboard() {
   const scaleUpVariants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }
+    const scaleUpVariants = {
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }
   };
 
   const fadeInVariants = {
@@ -70,6 +72,10 @@ function CustomerDashboard() {
     pulse: {
       scale: [1, 1.1, 1],
       transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+    }
+    const pulseVariants = {
+    pulse: {
+      scale: [1, 1.1, 1],
     }
   };
 
@@ -125,6 +131,16 @@ function CustomerDashboard() {
           </ul>
         </aside>
 
+        <ul className="space-y-2 font-[Open Sans]">
+            {[
+              { text: 'Home', path: '/dashboard', active: true },
+              { text: 'Profile', path: '/profile' },
+              { text: 'Contact Technician', path: '/contact-technician' },
+              { text: 'Book Service Center', path: '/book-service-center' },
+              { text: 'About Us', path: '/about-us' },
+              { text: 'Logout', path: '/logout' },
+            ].map((item) => (
+
         {/* Mobile Menu Button */}
         <motion.button 
           className="md:hidden fixed top-4 left-4 z-30 p-2 bg-orange-600 text-white rounded-full hover:bg-orange-700 hover:scale-110 transition-all duration-200 ease-in-out"
@@ -132,6 +148,12 @@ function CustomerDashboard() {
           variants={pulseVariants}
           animate="pulse"
         >
+ <motion.button 
+          className="md:hidden fixed top-4 left-4 z-30 p-2 bg-orange-600 text-white rounded-full hover:bg-orange-700 hover:scale-110 transition-all duration-200 ease-in-out"
+          variants={pulseVariants}
+          animate="pulse"
+        >
+              
           <FaBars />
         </motion.button>
         <motion.button 
@@ -187,7 +209,15 @@ function CustomerDashboard() {
               initial="hidden"
               animate="visible"
               variants={scaleUpVariants}
+              transitio
+<motion.div 
+              className="p-5 rounded-lg shadow-lg text-center bg-white"
+              initial="hidden"
+              animate="visible"
               transition={{ delay: 0.1 }} // Replaces animate-delay-100
+            >
+              
+              n={{ delay: 0.1 }} // Replaces animate-delay-100
             >
               <FaWrench className="h-12 w-12 text-orange-600 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-gray-800 mb-2 font-[Raleway]">Total Services</h3>

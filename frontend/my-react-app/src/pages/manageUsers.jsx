@@ -111,6 +111,13 @@ function ManageUsers() {
             </div>
           </header>
 
+          <main className="ssp-5 max-w-7xl mx-auto w-full">
+          <header className="bg-gradient-to-r from-orange-600 to-orange-800 text-white p-4 rounded-lg mb-6 flex justify-between items-center shadow-lg animate-slide-up">
+            <div>
+              <h1 className="text-3xl font-extrabold font-[Poppins] tracking-tight">Manage Users</h1>
+            </div>
+          </header>
+
           {/* User Management */}
           <section>
             <div className="flex flex-col sm:flex-row justify-between items-center mb-4 gap-3 animate-slide-up">
@@ -142,6 +149,13 @@ function ManageUsers() {
                       <td className="border border-gray-200 p-3">
                         <span className={`px-2 py-1 rounded-full text-xs font-[Open Sans] ${
                           user.role === 'Admin' ? 'bg-purple-100 text-purple-800' : 'bg-orange-100 text-orange-800'
+
+                      {users.map((user) => (
+                    <tr key={user.id} className="hover:bg-gray-50">
+                      <td className="border border-gray-200 p-3 font-[Open Sans]">{user.name}</td>
+                      <td className="border border-gray-200 p-3 font-[Open Sans]">{user.phone}</td>
+                      <td className="border border-gray-200 p-3">
+                        <span className={`px-2 py-1 rounded-full text-xs font-[Open Sans] ${
                         }`}>
                           {user.role}
                         </span>

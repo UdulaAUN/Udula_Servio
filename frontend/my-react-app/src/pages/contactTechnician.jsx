@@ -27,6 +27,24 @@ function ContactTechnician() {
     alert('Your message has been sent to the technician!');
     setFormData({ name: '', email: '', contactNumber: '', address: '', vehicleMake: '', vehicleModel: '', vehicleYear: '', message: '' });
   };
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    // Simulate form submission (e.g., API call)
+    alert('Your message has been sent to the technician!');
+    setFormData({ name: '', email: '', contactNumber: '', address: '', vehicleMake: '', vehicleModel: '', vehicleYear: '', message: '' });
+  };
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    // Simulate form submission (e.g., API call)
+    console.log('Form submitted:', formData);
+    setFormData({ name: '', email: '', contactNumber: '', address: '', vehicleMake: '', vehicleModel: '', vehicleYear: '', message: '' });
+  };
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    // Simulate form submission (e.g., API call)
+    console.log('Form submitted:', formData);
+    alert('Your message has been sent to the technician!');
+  };
 
   // Framer Motion animation variants (same as CustomerDashboard)
   const slideUpVariants = {

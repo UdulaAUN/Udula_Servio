@@ -32,6 +32,16 @@ function AllServices() {
     setNewService({ customer: '',: '', type: '', status: 'Pending', cost: '' });
     setShowAddModal(false);
   };
+  
+  const handleServiceSubmit = (e) => {
+    e.preventDefault();
+    setNewService({ customer: '',: '', type: '', status: 'Pending', cost: '' });
+  };
+  
+  const handleServiceSubmit = (e) => {
+    e.preventDefault();
+    setShowAddModal(false);
+  };
 
 
   const handleEditSubmit = (e) => {
@@ -43,10 +53,21 @@ function AllServices() {
     setShowEditModal(false);
   };
 
-  const handleDelete = (id) => setServices(services.filter(service => service.id !== id));
-  const handleEditClick = (service) => {
-    setEditService({ ...service });
-    setShowEditModal(true);
+  
+  const handleServiceSubmit = (e) => {
+    e.preventDefault();
+    setNewService({ customer: '',: '', type: '', status: 'Pending', cost: '' });
+    setShowAddModal(false);
+  };
+  
+  const handleServiceSubmit = (e) => {
+    e.preventDefault();
+    setShowAddModal(false);
+  };
+  
+  const handleServiceSubmit = (e) => {
+    e.preventDefault();
+    setNewService({ customer: '',: '', type: '', status: 'Pending', cost: '' });
   };
 
   return (

@@ -59,12 +59,20 @@ function AllServices() {
     setNewService({ customer: '',: '', type: '', status: 'Pending', cost: '' });
     setShowAddModal(false);
   };
+   const handleServiceSubmit = (e) => {
+    e.preventDefault();
+    setShowAddModal(false);
+  };
   
   const handleServiceSubmit = (e) => {
     e.preventDefault();
     setShowAddModal(false);
   };
-  
+
+   
+  const handleServiceSubmit = (e) => {
+    setShowAddModal(false);
+  };
   const handleServiceSubmit = (e) => {
     e.preventDefault();
     setNewService({ customer: '',: '', type: '', status: 'Pending', cost: '' });

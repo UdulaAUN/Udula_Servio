@@ -33,6 +33,13 @@ function AllServices() {
     setShowAddModal(false);
   };
 
+    const handleServiceSubmit = (e) => {
+    e.preventDefault();
+    setServices([{ ...newService, id: services.length + 1, cost: Number(newService.cost) }]);
+    setShowAddModal(false);
+  };
+
+
   const handleServiceSubmit = (e) => {
     e.preventDefault();
     setNewService({ customer: '',: '', type: '', status: 'Pending', cost: '' });

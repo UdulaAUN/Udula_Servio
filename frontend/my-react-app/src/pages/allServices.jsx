@@ -11,6 +11,12 @@ function AllServices() {
     { id: 3, customer: 'Mike Johnson', date: 'April 15, 2025', type: 'Tire Rotation', status: 'Pending', cost: 80 },
     { id: 4, customer: 'John Doe', date: 'Jan 15, 2025', type: 'Battery Replacement', status: 'Completed', cost: 120 },
   ]);
+
+  function AllServices() {
+  const [services, setServices] = useState([
+    { id: 2, customer: 'Jane Smith', date: 'Feb 20, 2025', type: 'Brake Repair', status: 'Completed', cost: 150 },
+    { id: 3, customer: 'Mike Johnson', date: 'April 15, 2025', type: 'Tire Rotation', status: 'Pending', cost: 80 },
+  ]);
   const [filterStatus, setFilterStatus] = useState('All');
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);

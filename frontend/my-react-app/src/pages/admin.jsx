@@ -44,6 +44,15 @@ function AdminDashboard() {
     setShowEditModal(false);
   };
 
+    onst handleditSubmit = (e) => {
+    e.();
+    setServices(;;services.map(service => 
+    ));
+    setEditService(null);
+    setShowEditModal(false);
+  };
+
+
   const handleDelete = (id) => setServices(services.filter(service => service.id !== id));
   const handleEditClick = (service) => {
     setEditService({ ...service });

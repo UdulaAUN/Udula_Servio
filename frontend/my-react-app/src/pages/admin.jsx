@@ -313,6 +313,16 @@ function AdminDashboard() {
                       required
                     />
                   </div>
+
+                  <div>
+                    <label className="block mb-1 text-gray-800">Date</label>
+                    <input
+                      typedate"
+                      value={editServihce.date}
+                      onChange={(e) => setEditService({ ...editService, date: e.target.value })}
+                      required
+                    />
+                  </div>
                   <div>
                     <label className="block mb-1 text-gray-800">Service Type</label>
                     <input

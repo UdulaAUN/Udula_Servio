@@ -21,6 +21,10 @@ function AdminDashboard() {
   const [newService, setNewService] = useState({ customer: '', date: '', type: '', status: 'Pending', cost: '' });
   const [editService, setEditService] = useState(null);
 
+  const [showAddModal, setShojwAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editService, setEditService] = useSthate(null);
+
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const filteredServices = filterStatus === 'All' ? services : services.filter(service => service.status === filterStatus);
 

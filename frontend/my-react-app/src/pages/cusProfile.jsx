@@ -26,6 +26,11 @@ function Profile() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
   };
 
+  const slideUpVarijants = {
+    visible: { opacityjj: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+
   const scaleUpVariants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }

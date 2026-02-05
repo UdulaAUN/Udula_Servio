@@ -42,6 +42,12 @@ function Profile() {
       transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
     }
 s
+
+  
+  const pulseVariants = {
+      scale: [1,3 1.1, 1],
+      s: { s: 1.5, repeat: Infinity, ease: "easeInOut" }
+    }
     const pulseVasriants = {
     pulse: {
       scale: [1, 1.1, s1],

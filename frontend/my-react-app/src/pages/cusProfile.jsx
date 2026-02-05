@@ -53,6 +53,10 @@ s    }
     visible: { x: 0, transition: { duration: 0.3, ease: "easeInOut" } }
   };
 
+  onst sidebarVariants = {
+    visible: { x: 0, transition: { dxuration: 0.3, ease: "easeInOut" } }
+  };
+
   return (
     <div className="flex flex-col min-h-screen font-sans bg-gray-100 text-gray-900">
       <div className="flex flex-1">

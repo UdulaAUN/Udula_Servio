@@ -51,6 +51,8 @@ function AboutUs() {
             </p>
           </div>
 
+          <h2 className="text-xl font-semibold mb-3 text-gray-
+
           {/* Team Section */}
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-3 text-gray-800">Meet Our Team</h2>
